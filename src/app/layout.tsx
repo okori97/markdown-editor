@@ -1,14 +1,9 @@
 import "~/styles/globals.css";
 
-import { Inter } from "next/font/google";
 import { Roboto, Roboto_Slab } from "next/font/google";
 import { Navbar } from "./_components/Navbar";
 import { Sidebar } from "./_components/Sidebar";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+import { AppContextProvider } from "./Context/state";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -36,13 +31,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-roboto ${roboto.variable}`}>
-        <main className="flex flex-row ">
-          <Sidebar />
-          <section className="w-full">
-            <Navbar />
-            {children}
-          </section>
-        </main>
+        <AppContextProvider>
+          <main className="flex flex-row ">
+            <Sidebar />
+            <section className="w-full">
+              <Navbar />
+              {children}
+            </section>
+          </main>
+        </AppContextProvider>
       </body>
     </html>
   );

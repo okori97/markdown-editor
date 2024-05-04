@@ -1,7 +1,16 @@
+"use client";
+
 import { Button } from "./Button";
 import { FileItem } from "./FileItem";
+import { useAppContext } from "../Context/state";
 
 export function Sidebar() {
+  const { isSidebarOpen } = useAppContext();
+
+  if (isSidebarOpen == false) {
+    return;
+  }
+
   return (
     <div className="bg-primary-200 h-lvh w-1/4  p-5">
       <div className=" text-secondary-150 text-sm font-normal tracking-widest">

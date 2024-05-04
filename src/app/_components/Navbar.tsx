@@ -1,17 +1,27 @@
+"use client";
+
 import Image from "next/image";
 import "../../../public/icon-menu.svg";
 import { FileItem } from "./FileItem";
 import { Button } from "./Button";
+import { useAppContext } from "../Context/state";
 
 export function Navbar() {
+  const { setIsSidebarOpen, isSidebarOpen } = useAppContext();
+
   return (
     <div className="bg-primary-150 flex h-fit w-full items-center justify-between pr-3">
       <div className="flex items-center ">
-        <a href="">
-          <div className=" bg-primary-100 px-4 py-6">
+        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+          <div
+            className={
+              (isSidebarOpen ? "bg-tertiary-150" : "bg-primary-100") +
+              " px-4 py-6"
+            }
+          >
             <Image src={"/icon-menu.svg"} alt="" width={24} height={24} />
           </div>
-        </a>
+        </button>
         <div className="mr-5 flex h-8  items-center border-r px-8">
           <Image src={"/logo.svg"} alt="logo" width={128} height={32} />
         </div>

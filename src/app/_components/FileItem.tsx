@@ -8,7 +8,7 @@ export function FileItem() {
         alt="docuument"
         width={14}
         height={14}
-        className="h-[14px] w-auto px-4"
+        className="h-[14px] w-auto pr-4"
       />
       <div className="flex flex-col text-xs font-light">
         <p className=" text-secondary-150">Document Name</p>

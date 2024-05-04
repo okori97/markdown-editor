@@ -8,6 +8,7 @@ export default {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         roboto: ["var(--font-roboto)", ...fontFamily.serif],
+        robotoSlab: ["var(--font-roboto-slab)", ...fontFamily.serif],
       },
       colors: {
         "primary-200": "#151619",

@@ -18,17 +18,18 @@ import {
  */
 export const createTable = pgTableCreator((name) => `markdown-editor_${name}`);
 
-export const posts = createTable(
-  "post",
+export const documents = createTable(
+  "documents",
   {
     id: serial("id").primaryKey(),
-    name: varchar("name", { length: 256 }),
+    title: varchar("name", { length: 256 }),
+    content: varchar("content", { length: 2000 }),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
     updatedAt: timestamp("updatedAt"),
   },
   (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
+    nameIndex: index("title_idx").on(example.title),
+  }),
 );

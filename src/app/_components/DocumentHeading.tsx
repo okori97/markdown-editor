@@ -9,7 +9,6 @@ export function DocumentHeading({
 }) {
   return (
     <div className="  bg-secondary-50  flex flex-row items-center justify-between px-4 py-1.5">
-      {" "}
       <p className=" text-secondary-150  text-xs  font-[500] capitalize tracking-widest">
         {text}
       </p>

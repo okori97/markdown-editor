@@ -5,7 +5,7 @@ import { FileItem } from "./FileItem";
 import { useAppContext } from "../Context/state";
 
 export function Sidebar() {
-  const { isSidebarOpen } = useAppContext();
+  const { isSidebarOpen, savedFiles } = useAppContext();
 
   if (isSidebarOpen == false) {
     return;
@@ -18,8 +18,9 @@ export function Sidebar() {
         <Button icon="plus" text="New Document" isFullWidth={true} />
       </div>
       <div className="mt-5 flex flex-col gap-5">
-        <FileItem />
-        <FileItem />
+        {savedFiles.map((file) => (
+          <FileItem document={file} isInNavbar={false} key={file.id} />
+        ))}
       </div>
     </div>
   );

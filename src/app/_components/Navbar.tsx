@@ -7,8 +7,9 @@ import { Button } from "./Button";
 import { useAppContext } from "../Context/state";
 
 export function Navbar() {
-  const { setIsSidebarOpen, isSidebarOpen } = useAppContext();
+  const { setIsSidebarOpen, isSidebarOpen, activeFile } = useAppContext();
 
+  console.log("nav", activeFile);
   return (
     <div className="bg-primary-150 flex h-fit w-full items-center justify-between pr-3">
       <div className="flex items-center ">
@@ -25,7 +26,7 @@ export function Navbar() {
         <div className="mr-5 flex h-8  items-center border-r px-8">
           <Image src={"/logo.svg"} alt="logo" width={128} height={32} />
         </div>
-        <FileItem />
+        <FileItem document={activeFile} isInNavbar={true} />
       </div>
       <div className="flex items-center">
         <a href="">

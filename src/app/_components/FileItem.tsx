@@ -1,6 +1,15 @@
+"use client";
 import Image from "next/image";
+import type { MDFile } from "types";
 
-export function FileItem() {
+export function FileItem({
+  document,
+  isInNavbar,
+}: {
+  document: MDFile | undefined;
+  isInNavbar: boolean;
+}) {
+  console.log(document, isInNavbar);
   return (
     <div className="flex items-center">
       <Image
@@ -11,8 +20,12 @@ export function FileItem() {
         className="h-[14px] w-auto pr-4"
       />
       <div className="flex flex-col text-xs font-light">
-        <p className=" text-secondary-150">Document Name</p>
-        <p className="text-white">Welcome.md</p>
+        {isInNavbar == true ? (
+          <p className=" text-secondary-150">Document Name</p>
+        ) : (
+          <p className="text-white">{document?.createdAt}</p>
+        )}
+        <p className="text-white">{document?.title}.md</p>
       </div>
     </div>
   );

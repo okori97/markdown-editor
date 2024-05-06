@@ -1,29 +1,25 @@
 "use client";
 import { createContext, useContext, useState, useEffect } from "react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
-
-interface File {
-  title: string;
-  content: string;
-  date?: string;
-}
+import { NEW_DOCUMENT } from "~/utils/constants";
+import type { MDFile } from "../../../types";
 
 const initialState: State = {
-  activeFile: { title: "", content: "" },
+  activeFile: NEW_DOCUMENT,
   savedFiles: [],
   darkMode: false,
   isSidebarOpen: false,
-  setActiveFile: (): File => ({ title: "", content: "" }),
-  setSavedFile: (): File[] => [],
+  setActiveFile: (): MDFile => NEW_DOCUMENT,
+  setSavedFiles: (): MDFile[] => [],
   setDarkMode: (): boolean => false,
   setIsSidebarOpen: (): boolean => false,
 };
 
 export interface State {
-  activeFile: File;
-  setActiveFile: Dispatch<SetStateAction<File>>;
-  savedFiles: File[];
-  setSavedFile: Dispatch<SetStateAction<File[]>>;
+  activeFile: MDFile | undefined;
+  setActiveFile: Dispatch<SetStateAction<MDFile | undefined>>;
+  savedFiles: MDFile[];
+  setSavedFiles: Dispatch<SetStateAction<MDFile[]>>;
   darkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;
   isSidebarOpen: boolean;
@@ -35,8 +31,10 @@ const AppContext = createContext<State>(initialState);
 export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [activeFile, setActiveFile] = useState({ title: "", content: "" });
-  const [savedFiles, setSavedFile] = useState<File[]>([]);
+  const [activeFile, setActiveFile] = useState<MDFile | undefined>(
+    NEW_DOCUMENT,
+  );
+  const [savedFiles, setSavedFiles] = useState<MDFile[]>([]);
   const [darkMode, setDarkMode] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -56,7 +54,7 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
       value={{
         activeFile,
         setActiveFile,
-        setSavedFile,
+        setSavedFiles,
         savedFiles,
         darkMode,
         setDarkMode,

@@ -22,12 +22,9 @@ export const documents = createTable(
   "documents",
   {
     id: serial("id").primaryKey(),
-    title: varchar("name", { length: 256 }),
-    content: varchar("content", { length: 2000 }),
-    createdAt: timestamp("created_at")
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: timestamp("updatedAt"),
+    title: varchar("name", { length: 256 }).notNull(),
+    content: varchar("content", { length: 2000 }).notNull(),
+    createdAt: varchar("created_at", { length: 256 }).notNull(),
   },
   (example) => ({
     nameIndex: index("title_idx").on(example.title),

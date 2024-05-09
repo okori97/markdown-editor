@@ -10,11 +10,13 @@ const initialState: State = {
   darkMode: false,
   isSidebarOpen: false,
   isModalOpen: false,
+  isFullScreen: false,
   setActiveFile: (): MDFile => NEW_DOCUMENT,
   setSavedFiles: (): MDFile[] => [],
   setDarkMode: (): boolean => false,
   setIsSidebarOpen: (): boolean => false,
   setIsModalOpen: (): boolean => false,
+  setIsFullScreen: (): boolean => false,
 };
 
 export interface State {
@@ -28,6 +30,8 @@ export interface State {
   setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
   isModalOpen: boolean;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+  isFullScreen: boolean;
+  setIsFullScreen: Dispatch<SetStateAction<boolean>>;
 }
 
 const AppContext = createContext<State>(initialState);
@@ -40,6 +44,7 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   const [darkMode, setDarkMode] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFullScreen, setIsFullScreen] = useState(false);
 
   useEffect(() => {
     const isDark = localStorage.getItem("darkMode") === "false";
@@ -65,6 +70,8 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
         setIsSidebarOpen,
         isModalOpen,
         setIsModalOpen,
+        isFullScreen,
+        setIsFullScreen,
       }}
     >
       {children}

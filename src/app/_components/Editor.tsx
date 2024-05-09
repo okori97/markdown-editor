@@ -3,7 +3,11 @@ import { useAppContext } from "../Context/state";
 import type { MDFile } from "types";
 
 export function Editor() {
-  const { activeFile, setActiveFile } = useAppContext();
+  const { activeFile, setActiveFile, isFullScreen } = useAppContext();
+
+  if (isFullScreen) {
+    return;
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const target = e.target as HTMLTextAreaElement;

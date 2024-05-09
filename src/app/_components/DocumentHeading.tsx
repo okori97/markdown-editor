@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useAppContext } from "../Context/state";
 
 export function DocumentHeading({
   text,
@@ -7,15 +8,23 @@ export function DocumentHeading({
   text: string;
   isPreview: boolean;
 }) {
+  const { setIsFullScreen, isFullScreen } = useAppContext();
+
+  const toggleFullScreen = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsFullScreen(!isFullScreen);
+  };
   return (
-    <div className="  bg-secondary-50  flex flex-row items-center justify-between px-4 py-1.5">
-      <p className=" text-secondary-150  text-xs  font-[500] capitalize tracking-widest">
+    <div className="  flex  flex-row items-center justify-between bg-secondary-50 px-4 py-1.5">
+      <p className=" text-xs  font-[500]  capitalize tracking-widest text-secondary-150">
         {text}
       </p>
       {isPreview && (
-        <a href="">
+        <a href="" onClick={toggleFullScreen}>
           <Image
-            src="/icon-show-preview.svg"
+            src={
+              isFullScreen ? "/icon-hide-preview.svg" : "/icon-show-preview.svg"
+            }
             alt="edit"
             width={16}
             height={16}

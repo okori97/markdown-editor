@@ -9,21 +9,25 @@ const initialState: State = {
   savedFiles: [],
   darkMode: false,
   isSidebarOpen: false,
+  isModalOpen: false,
   setActiveFile: (): MDFile => NEW_DOCUMENT,
   setSavedFiles: (): MDFile[] => [],
   setDarkMode: (): boolean => false,
   setIsSidebarOpen: (): boolean => false,
+  setIsModalOpen: (): boolean => false,
 };
 
 export interface State {
-  activeFile: MDFile | undefined;
-  setActiveFile: Dispatch<SetStateAction<MDFile | undefined>>;
+  activeFile: MDFile;
+  setActiveFile: Dispatch<SetStateAction<MDFile>>;
   savedFiles: MDFile[];
   setSavedFiles: Dispatch<SetStateAction<MDFile[]>>;
   darkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;
   isSidebarOpen: boolean;
   setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
+  isModalOpen: boolean;
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const AppContext = createContext<State>(initialState);
@@ -31,12 +35,11 @@ const AppContext = createContext<State>(initialState);
 export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [activeFile, setActiveFile] = useState<MDFile | undefined>(
-    NEW_DOCUMENT,
-  );
+  const [activeFile, setActiveFile] = useState<MDFile>(NEW_DOCUMENT);
   const [savedFiles, setSavedFiles] = useState<MDFile[]>([]);
   const [darkMode, setDarkMode] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const isDark = localStorage.getItem("darkMode") === "false";
@@ -60,6 +63,8 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
         setDarkMode,
         isSidebarOpen,
         setIsSidebarOpen,
+        isModalOpen,
+        setIsModalOpen,
       }}
     >
       {children}

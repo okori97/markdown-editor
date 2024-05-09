@@ -6,7 +6,7 @@ import {
   index,
   pgTableCreator,
   serial,
-  timestamp,
+  // timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
 
@@ -22,7 +22,7 @@ export const documents = createTable(
   "documents",
   {
     id: serial("id").primaryKey(),
-    title: varchar("name", { length: 256 }).notNull(),
+    title: varchar("title", { length: 256 }).notNull(),
     content: varchar("content", { length: 2000 }).notNull(),
     createdAt: varchar("created_at", { length: 256 }).notNull(),
   },

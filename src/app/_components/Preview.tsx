@@ -2,15 +2,9 @@ import { DocumentHeading } from "./DocumentHeading";
 import ReactMarkdown from "react-markdown";
 import { useAppContext } from "../Context/state";
 
-export function Preview({
-  file,
-}: {
-  file: {
-    title?: string;
-    content?: string;
-  };
-}) {
+export function Preview() {
   const { activeFile } = useAppContext();
+
   return (
     <div className="h-lvh w-1/2  ">
       <DocumentHeading text="PREVIEW" isPreview={true} />

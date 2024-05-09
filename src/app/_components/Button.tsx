@@ -1,28 +1,37 @@
 import Image from "next/image";
+import { useAppContext } from "../Context/state";
+import type { MDFile } from "types";
 
 export function Button({
   icon,
   text,
   isFullWidth,
+  onClick,
 }: {
-  icon: string;
+  icon?: string;
   text: string;
   isFullWidth?: boolean;
+  onClick?: (data: MDFile | undefined) => Promise<void> | undefined | void;
 }) {
+  const { activeFile } = useAppContext();
+
   return (
     <button
       className={
         (isFullWidth ? "w-full justify-center " : "") +
-        "bg-tertiary-100 flex gap-2 rounded-sm px-3 py-2 text-xs font-light text-white"
+        "flex min-h-10 items-center gap-2 rounded-[4px] bg-tertiary-100 px-3 py-2 text-sm font-light text-white hover:bg-tertiary-150"
       }
+      onClick={onClick ? () => onClick(activeFile) : undefined}
     >
-      <Image
-        src={`/icon-${icon}.svg`}
-        alt={`${icon} icon`}
-        width={16}
-        height={16}
-        className="h-[14px] w-auto"
-      />
+      {icon ? (
+        <Image
+          src={`/icon-${icon}.svg`}
+          alt={`${icon} icon`}
+          width={16}
+          height={16}
+          className="h-[14px] w-auto"
+        />
+      ) : undefined}
       <p>{text}</p>
     </button>
   );

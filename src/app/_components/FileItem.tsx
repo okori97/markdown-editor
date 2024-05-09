@@ -1,15 +1,21 @@
 "use client";
 import Image from "next/image";
 import type { MDFile } from "types";
+import { getFile } from "~/server/queries";
+import { useAppContext } from "../Context/state";
 
 export function FileItem({
   document,
   isInNavbar,
 }: {
-  document: MDFile | undefined;
+  document: MDFile;
   isInNavbar: boolean;
 }) {
-  console.log(document, isInNavbar);
+  const { setActiveFile } = useAppContext();
+  const getDocument = async () => {
+    const selected = await getFile(document.id);
+    setActiveFile(selected!);
+  };
   return (
     <div className="flex items-center">
       <Image
@@ -25,7 +31,12 @@ export function FileItem({
         ) : (
           <p className="text-white">{document?.createdAt}</p>
         )}
-        <p className="text-white">{document?.title}.md</p>
+        <p
+          className="cursor-pointer text-white hover:text-tertiary-150"
+          onClick={isInNavbar ? undefined : () => getDocument()}
+        >
+          {document?.title}.md
+        </p>
       </div>
     </div>
   );

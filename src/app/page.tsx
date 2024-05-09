@@ -7,11 +7,12 @@ import type { MDFile } from "types";
 import { Editor } from "./_components/Editor";
 import { Preview } from "./_components/Preview";
 import { getAllFiles } from "~/server/queries";
+import { Modal } from "./_components/Modal";
 
 export const dynamic = "force-dynamic";
 
 export default function HomePage() {
-  const { setSavedFiles, setActiveFile } = useAppContext();
+  const { setSavedFiles, setActiveFile, isModalOpen } = useAppContext();
 
   useEffect(() => {
     async function fetchData() {
@@ -19,19 +20,20 @@ export default function HomePage() {
       setSavedFiles(data);
 
       if (data.length > 0) {
-        setActiveFile(data[0]);
+        const current = data[0];
+        setActiveFile(current!);
       }
 
       return data;
     }
-
     fetchData().catch(console.error);
-  }, []);
+  }, [setSavedFiles, setActiveFile]);
 
   return (
     <main className="flex min-h-screen flex-row ">
       <Editor />
-      <Preview file={{ content: "# Hello World" }} />
+      <Preview />
+      {isModalOpen == true && <Modal />}
     </main>
   );
 }

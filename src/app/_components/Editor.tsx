@@ -19,7 +19,7 @@ export function Editor() {
       <DocumentHeading text="MARKDOWN" isPreview={false} />
       <div className=" h-full  overflow-y-auto">
         <textarea
-          className=" text-primary-150 font-regular   h-full  w-full  bg-white p-4 text-sm focus:outline-none"
+          className=" font-regular h-full   w-full  bg-white  p-4 text-sm text-primary-150 focus:outline-none"
           value={activeFile?.content ?? ""}
           onChange={handleChange}
           placeholder="# Welcome to Markdown

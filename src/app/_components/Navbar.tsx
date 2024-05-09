@@ -5,13 +5,26 @@ import "../../../public/icon-menu.svg";
 import { FileItem } from "./FileItem";
 import { Button } from "./Button";
 import { useAppContext } from "../Context/state";
+import { saveFile } from "~/server/queries";
 
 export function Navbar() {
-  const { setIsSidebarOpen, isSidebarOpen, activeFile } = useAppContext();
+  const {
+    setIsSidebarOpen,
+    isSidebarOpen,
+    activeFile,
+    setIsModalOpen,
+    setActiveFile,
+  } = useAppContext();
 
-  console.log("nav", activeFile);
+  const handleSave = async () => {
+    const updatedDoc = await saveFile(activeFile);
+    if (updatedDoc != undefined && updatedDoc?.length > 0) {
+      setActiveFile(updatedDoc[0]!);
+    }
+  };
+
   return (
-    <div className="bg-primary-150 flex h-fit w-full items-center justify-between pr-3">
+    <div className="flex h-fit w-full items-center justify-between bg-primary-150 pr-3">
       <div className="flex items-center ">
         <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
           <div
@@ -29,7 +42,13 @@ export function Navbar() {
         <FileItem document={activeFile} isInNavbar={true} />
       </div>
       <div className="flex items-center">
-        <a href="">
+        <a
+          href=""
+          onClick={(e) => {
+            e.preventDefault();
+            setIsModalOpen(true);
+          }}
+        >
           <Image
             src="/icon-delete.svg"
             alt="trash can"
@@ -38,7 +57,7 @@ export function Navbar() {
             className="h-[16px] w-auto px-4"
           />
         </a>
-        <Button icon="save" text="Save Changes" />
+        <Button icon="save" text="Save Changes" onClick={handleSave} />
       </div>
     </div>
   );

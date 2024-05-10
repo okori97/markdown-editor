@@ -15,7 +15,7 @@ export function Preview() {
       <div
         className={
           " h-full overflow-y-auto p-4" +
-          (isFullScreen ? " m-auto mt-4 w-[672px]" : " ")
+          (isFullScreen ? " m-auto w-[672px]" : " ")
         }
       >
         <ReactMarkdown>{activeFile?.content}</ReactMarkdown>

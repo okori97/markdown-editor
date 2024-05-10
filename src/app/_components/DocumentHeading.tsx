@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useAppContext } from "../Context/state";
 
 export function DocumentHeading({
@@ -21,15 +20,7 @@ export function DocumentHeading({
       </p>
       {isPreview && (
         <a href="" onClick={toggleFullScreen}>
-          <Image
-            src={
-              isFullScreen ? "/icon-hide-preview.svg" : "/icon-show-preview.svg"
-            }
-            alt="edit"
-            width={16}
-            height={16}
-            className="w-auto cursor-pointer "
-          />
+          <div className={isFullScreen ? "icon-eye off" : "icon-eye"}></div>
         </a>
       )}
     </div>

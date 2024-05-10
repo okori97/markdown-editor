@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.icon-eye {
+  background: url("/icon-show-preview.svg");
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.icon-eye:hover {
+  background-image: url("/icon-showhover-preview.svg");
+}
+
+.icon-eye.off {
+  background: url("/icon-hide-preview.svg");
+}
+.icon-eye.off:hover {
+  background: url("/icon-hidehover-preview.svg");
+}
+
+.icon-bin {
+  background-image: url("/icon-delete.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 18px;
+  height: 18px;
+}
+
+.icon-bin:hover {
+  background-image: url("/icon-deletehover.svg");
+}

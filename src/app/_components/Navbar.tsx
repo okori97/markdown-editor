@@ -36,26 +36,21 @@ export function Navbar() {
             <Image src={"/icon-menu.svg"} alt="" width={24} height={24} />
           </div>
         </button>
-        <div className="mr-5 flex h-8  items-center border-r px-8">
+        <div className="mr-5 flex h-8  items-center border-r px-8 ">
           <Image src={"/logo.svg"} alt="logo" width={128} height={32} />
         </div>
         <FileItem document={activeFile} isInNavbar={true} />
       </div>
       <div className="flex items-center">
         <a
+          className="mr-3 w-4"
           href=""
           onClick={(e) => {
             e.preventDefault();
             setIsModalOpen(true);
           }}
         >
-          <Image
-            src="/icon-delete.svg"
-            alt="trash can"
-            width={16}
-            height={16}
-            className="h-[16px] w-auto px-4"
-          />
+          <div className={"icon-bin"}></div>
         </a>
         <Button icon="save" text="Save Changes" onClick={handleSave} />
       </div>

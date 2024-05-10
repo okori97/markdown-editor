@@ -12,7 +12,8 @@ import { Modal } from "./_components/Modal";
 export const dynamic = "force-dynamic";
 
 export default function HomePage() {
-  const { setSavedFiles, setActiveFile, isModalOpen } = useAppContext();
+  const { setSavedFiles, setActiveFile, isModalOpen, isSidebarOpen } =
+    useAppContext();
 
   useEffect(() => {
     async function fetchData() {
@@ -30,7 +31,11 @@ export default function HomePage() {
   }, [setSavedFiles, setActiveFile]);
 
   return (
-    <main className="flex min-h-screen flex-row ">
+    <main
+      className={
+        (isSidebarOpen ? " relative " : "") + "min-h-screen flex-row sm:flex "
+      }
+    >
       <Editor />
       <Preview />
       {isModalOpen == true && <Modal />}

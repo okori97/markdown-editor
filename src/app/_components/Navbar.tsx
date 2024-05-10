@@ -24,7 +24,14 @@ export function Navbar() {
   };
 
   return (
-    <div className="flex h-fit w-full items-center justify-between bg-primary-150 pr-[6px] sm:pr-3">
+    <div
+      className={
+        (isSidebarOpen
+          ? " relative h-[52px] flex-wrap overflow-hidden sm:flex sm:h-fit sm:overflow-visible "
+          : "") +
+        "flex h-fit w-full items-center justify-between bg-primary-150 pr-[6px] sm:pr-3"
+      }
+    >
       <div className="flex w-fit items-center ">
         <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
           <div

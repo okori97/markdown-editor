@@ -36,7 +36,7 @@ export function Sidebar() {
     console.log("create new document");
   };
   return (
-    <div className="h-lvh w-[250px] bg-primary-200  p-5">
+    <div className="h-lvh w-[480px] bg-primary-200 p-5  sm:w-[250px]">
       <div className=" text-sm font-normal tracking-widest text-secondary-150">
         <p className="mb-5">MY DOCUMENTS</p>
         <Button

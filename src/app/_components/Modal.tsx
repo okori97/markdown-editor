@@ -7,20 +7,11 @@ import type { MDFile } from "types";
 import { getAllFiles } from "~/server/queries";
 
 export function Modal() {
-  const {
-    activeFile,
-    setIsModalOpen,
-    setActiveFile,
-    savedFiles,
-    setSavedFiles,
-  } = useAppContext();
+  const { activeFile, setIsModalOpen, setActiveFile, setSavedFiles } =
+    useAppContext();
 
   const handleClose = () => {
     setIsModalOpen(false);
-  };
-
-  const handleModalContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
   };
 
   const handleDeleteFile = async () => {
@@ -30,10 +21,9 @@ export function Modal() {
     const data: MDFile[] = await getAllFiles();
     setSavedFiles(data);
 
-    if (savedFiles.length > 0) {
-      const current = savedFiles[0];
-      setActiveFile(current!);
-      console.log("setActiveFile", savedFiles[0]);
+    if (data.length > 0) {
+      const next = data.find((file) => file.id !== activeFile.id);
+      setActiveFile(next!);
     } else {
       setActiveFile(NEW_DOCUMENT);
     }
@@ -65,3 +55,7 @@ export function Modal() {
     </div>
   );
 }
+
+const handleModalContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  e.stopPropagation();
+};

@@ -1,0 +1,97 @@
+.markdown a {
+  text-decoration: underline;
+}
+
+.markdown h1,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-weight: bold;
+  margin: 20px;
+}
+
+.markdown h1 {
+  font-size: 32px;
+  margin: 20px;
+}
+
+.markdown h2 {
+  font-size: 28px;
+  font-weight: 300;
+  margin: 20px;
+}
+
+.markdown h3 {
+  font-size: 24px;
+}
+.markdown h4 {
+  font-size: 20px;
+}
+.markdown h5 {
+  font-size: 16px;
+}
+.markdown h6 {
+  font-size: 14px;
+  color: var(--tertiary-100);
+}
+
+.markdown p,
+.markdown li {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.markdown strong {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.markdown ol,
+.markdown ul {
+  margin: 16px !important;
+  padding-left: 24px !important;
+}
+
+.markdown ol {
+  list-style: decimal;
+}
+.markdown ul {
+  list-style: disc;
+}
+
+.markdown ul > li::marker {
+  color: var(--tertiary-100);
+  font-size: 12px;
+  margin-right: 16px;
+}
+
+.markdown li {
+  padding-left: 8px;
+}
+
+.markdown blockquote {
+  padding: 24px;
+  border-left: solid 4px var(--tertiary-100);
+  border-radius: var(--radius-4);
+  background-color: #f5f5f5;
+}
+
+.markdown blockquote > p {
+  font-weight: 500;
+}
+
+.markdown pre {
+  background-color: #f5f5f5;
+  padding: 24px;
+  border-radius: var(--radius-4);
+  margin: 20px;
+}
+
+.markdown code {
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+}

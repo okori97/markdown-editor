@@ -1,6 +1,7 @@
 import { DocumentHeading } from "./DocumentHeading";
 import ReactMarkdown from "react-markdown";
 import { useAppContext } from "../Context/state";
+import styles from "../../styles/Preview.module.css";
 
 export function Preview() {
   const { activeFile, isFullScreen } = useAppContext();
@@ -14,6 +15,8 @@ export function Preview() {
       <DocumentHeading text="PREVIEW" isPreview={true} />
       <div
         className={
+          styles.markdown +
+          (isFullScreen ? "w-full" : "") +
           " h-full overflow-y-auto p-4" +
           (isFullScreen ? " m-auto w-[672px]" : " ")
         }

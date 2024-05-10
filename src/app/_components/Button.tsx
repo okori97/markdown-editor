@@ -7,11 +7,13 @@ export function Button({
   text,
   isFullWidth,
   onClick,
+  shrinkOnMobile,
 }: {
   icon?: string;
   text: string;
   isFullWidth?: boolean;
   onClick?: (data: MDFile | undefined) => Promise<void> | undefined | void;
+  shrinkOnMobile?: boolean;
 }) {
   const { activeFile } = useAppContext();
 
@@ -19,7 +21,7 @@ export function Button({
     <button
       className={
         (isFullWidth ? "w-full justify-center " : "") +
-        "flex min-h-10 items-center gap-2 rounded-[4px] bg-tertiary-100 px-4 py-1 text-sm font-light text-white hover:bg-tertiary-150"
+        "flex min-h-10 items-center gap-2 rounded-[4px] bg-tertiary-100 p-3 text-sm font-light text-white hover:bg-tertiary-150 sm:px-4 sm:py-1"
       }
       onClick={onClick ? () => onClick(activeFile) : undefined}
     >
@@ -29,10 +31,10 @@ export function Button({
           alt={`${icon} icon`}
           width={16}
           height={16}
-          className="h-[14px] w-auto"
+          className="h-[16px] w-auto sm:h-[14px]"
         />
       ) : undefined}
-      <p>{text}</p>
+      <p className={shrinkOnMobile ? "hidden sm:block" : ""}>{text}</p>
     </button>
   );
 }

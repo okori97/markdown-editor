@@ -9,7 +9,8 @@ export const getAllFiles = async (): Promise<MDFile[]> => {
   const documents: MDFile[] = await db.query.documents.findMany({
     orderBy: (model, { desc }) => desc(model.createdAt),
   });
-  console.log("IN DB:", documents);
+  const date = new Date().toLocaleTimeString();
+  console.log("GET ALL:", date, documents);
   return documents;
 };
 
@@ -62,7 +63,13 @@ export const saveFile = async (doc: MDFile) => {
 
 export const deleteFile = async (id: number | undefined) => {
   try {
-    await db.delete(documents).where(eq(documents.id, id!));
+    const deleted = await db
+      .delete(documents)
+      .where(eq(documents.id, id!))
+      .returning();
+    const date = new Date().toLocaleTimeString();
+
+    console.log("DELETED", date, deleted);
   } catch (error) {
     console.error(error);
   }

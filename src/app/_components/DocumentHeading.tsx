@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useAppContext } from "../Context/state";
 
 export function DocumentHeading({
@@ -18,11 +19,15 @@ export function DocumentHeading({
       <p className=" text-xs  font-[500]  capitalize tracking-widest text-secondary-150">
         {text}
       </p>
-      {isPreview && (
-        <a href="" onClick={toggleFullScreen}>
-          <div className={isFullScreen ? "icon-eye off" : "icon-eye"}></div>
-        </a>
-      )}
+
+      <a href="" onClick={toggleFullScreen}>
+        <div
+          className={
+            (isFullScreen ? "icon-eye off" : "icon-eye") +
+            (isPreview ? " sm:block" : " block sm:hidden")
+          }
+        ></div>
+      </a>
     </div>
   );
 }

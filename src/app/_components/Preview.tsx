@@ -9,7 +9,9 @@ export function Preview() {
   return (
     <div
       className={
-        "h-lvh w-1/2  " + (isFullScreen ? "w-full justify-center" : "")
+        isFullScreen
+          ? "h-lvh w-full justify-center"
+          : "hidden h-lvh sm:block sm:w-1/2"
       }
     >
       <DocumentHeading text="PREVIEW" isPreview={true} />

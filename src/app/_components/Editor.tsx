@@ -20,7 +20,7 @@ export function Editor() {
   };
 
   return (
-    <div className="h-lvh w-1/2 border-r ">
+    <div className="h-lvh w-full sm:w-1/2 sm:border-r ">
       <DocumentHeading text="MARKDOWN" isPreview={false} />
       <div className=" h-full  overflow-y-auto">
         <textarea

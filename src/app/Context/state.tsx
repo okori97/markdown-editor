@@ -50,13 +50,11 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
     const isDark = localStorage.getItem("darkMode") === "true";
     document.documentElement.classList.toggle("dark", isDark);
     setDarkMode(isDark);
-    console.log("useEffect");
   }, []);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
     localStorage.setItem("darkMode", `${darkMode}`);
-    console.log("setting theme:", darkMode);
   }, [darkMode]);
 
   return (

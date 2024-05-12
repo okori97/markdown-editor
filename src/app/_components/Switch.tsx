@@ -6,7 +6,6 @@ export function Switch() {
 
   const handleSwitch = () => {
     setDarkMode(!darkMode);
-    console.log(darkMode);
   };
 
   return (

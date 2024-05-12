@@ -39,11 +39,11 @@
 }
 
 .dark blockquote {
-  @apply bg-primary-150;
+  @apply bg-primary-150 !important;
 }
 
 .dark pre {
-  @apply bg-primary-150;
+  @apply bg-primary-150 !important;
 }
 
 .dark .markdown h1,

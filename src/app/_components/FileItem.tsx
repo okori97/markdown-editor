@@ -3,7 +3,8 @@ import Image from "next/image";
 import type { MDFile } from "types";
 import { getFile } from "~/server/queries";
 import { useAppContext } from "../Context/state";
-
+import { useState } from "react";
+import InputField from "./InputField";
 export function FileItem({
   document,
   isInNavbar,
@@ -12,10 +13,17 @@ export function FileItem({
   isInNavbar: boolean;
 }) {
   const { setActiveFile } = useAppContext();
+  const [isEditing, setIsEditing] = useState(false);
+
   const getDocument = async () => {
     const selected = await getFile(document.id);
     setActiveFile(selected!);
   };
+
+  const toggleEditing = () => {
+    setIsEditing(!isEditing);
+  };
+
   return (
     <div className="flex w-fit items-center">
       <Image
@@ -33,12 +41,17 @@ export function FileItem({
         ) : (
           <p className="text-white">{document?.createdAt}</p>
         )}
-        <p
-          className="cursor-pointer text-white hover:text-tertiary-150"
-          onClick={isInNavbar ? undefined : () => getDocument()}
-        >
-          {document?.title}.md
-        </p>
+
+        {isEditing ? (
+          <InputField toggleVisibility={toggleEditing} />
+        ) : (
+          <p
+            className="cursor-pointer text-white hover:text-tertiary-150"
+            onClick={isInNavbar ? () => toggleEditing() : () => getDocument()}
+          >
+            {document?.title}.md
+          </p>
+        )}
       </div>
     </div>
   );

@@ -2,13 +2,19 @@ import { type Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
-  content: ["./src/**/*.tsx"],
+  darkMode: "class",
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}", // Ensure your paths are correctly defined
+  ],
   theme: {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         roboto: ["var(--font-roboto)", ...fontFamily.serif],
         robotoSlab: ["var(--font-roboto-slab)", ...fontFamily.serif],
+        robotoMono: ["var(--font-roboto-mono)", ...fontFamily.mono],
       },
       colors: {
         "primary-200": "#151619",

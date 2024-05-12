@@ -6,6 +6,5 @@ export function getCurrentDate(): string {
       day: "numeric",
     })
     .replace(/\//g, "-");
-  console.log(date);
   return `${date}`;
 }

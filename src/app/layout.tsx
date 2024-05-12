@@ -1,6 +1,6 @@
 import "~/styles/globals.css";
 
-import { Roboto, Roboto_Slab } from "next/font/google";
+import { Roboto } from "next/font/google";
 import { Navbar } from "./_components/Navbar";
 import { Sidebar } from "./_components/Sidebar";
 import { AppContextProvider } from "./Context/state";
@@ -9,12 +9,6 @@ const roboto = Roboto({
   subsets: ["latin"],
   weight: ["100", "300", "400", "500", "700"],
   variable: "--font-roboto",
-});
-
-const roboto_slab = Roboto_Slab({
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "500", "700"],
-  variable: "--font-roboto-slab",
 });
 
 export const metadata = {
@@ -30,11 +24,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-roboto ${roboto.variable}`}>
+      <body className={`font-roboto ${roboto.variable} `}>
         <AppContextProvider>
-          <main className="flex flex-row ">
+          <main className="flex h-screen flex-row">
             <Sidebar />
-            <section className="w-full">
+            <section className="h-full w-full flex-grow overflow-auto">
               <Navbar />
               {children}
             </section>

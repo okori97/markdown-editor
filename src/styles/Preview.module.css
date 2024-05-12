@@ -2,24 +2,32 @@
   text-decoration: underline;
 }
 
+.markdown * {
+  font-family: var(--font-roboto-slab), serif;
+}
+
 .markdown h1,
 .markdown h3,
 .markdown h4,
 .markdown h5,
 .markdown h6 {
   font-weight: bold;
-  margin: 20px;
+  margin: 20px 0px;
+}
+
+.dark .markdown h1 {
+  color: white;
 }
 
 .markdown h1 {
   font-size: 32px;
-  margin: 20px;
+  margin: 20px 0px;
 }
 
 .markdown h2 {
   font-size: 28px;
   font-weight: 300;
-  margin: 20px;
+  margin: 20px 0px;
 }
 
 .markdown h3 {
@@ -33,7 +41,7 @@
 }
 .markdown h6 {
   font-size: 14px;
-  color: var(--tertiary-100);
+  @apply text-tertiary-150;
 }
 
 .markdown p,
@@ -62,8 +70,8 @@
 }
 
 .markdown ul > li::marker {
-  color: var(--tertiary-100);
   font-size: 12px;
+  @apply text-tertiary-150;
   margin-right: 16px;
 }
 
@@ -73,8 +81,8 @@
 
 .markdown blockquote {
   padding: 24px;
-  border-left: solid 4px var(--tertiary-100);
-  border-radius: var(--radius-4);
+  @apply border-l-4 border-tertiary-150;
+  border-radius: 4px;
   background-color: #f5f5f5;
 }
 
@@ -85,8 +93,8 @@
 .markdown pre {
   background-color: #f5f5f5;
   padding: 24px;
-  border-radius: var(--radius-4);
-  margin: 20px;
+  border-radius: 4px;
+  margin: 20px 0px;
 }
 
 .markdown code {

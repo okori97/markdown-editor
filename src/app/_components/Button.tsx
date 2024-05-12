@@ -17,12 +17,13 @@ export function Button({
 }) {
   const { activeFile } = useAppContext();
 
+  const buttonClasses =
+    (isFullWidth ? "w-full justify-center " : "") +
+    "flex min-h-10 items-center gap-2 rounded-[4px] bg-tertiary-100 p-3 text-sm font-light text-white hover:bg-tertiary-150 sm:px-4 sm:py-1";
+
   return (
     <button
-      className={
-        (isFullWidth ? "w-full justify-center " : "") +
-        "flex min-h-10 items-center gap-2 rounded-[4px] bg-tertiary-100 p-3 text-sm font-light text-white hover:bg-tertiary-150 sm:px-4 sm:py-1"
-      }
+      className={buttonClasses}
       onClick={onClick ? () => onClick(activeFile) : undefined}
     >
       {icon ? (
@@ -34,7 +35,9 @@ export function Button({
           className="h-[16px] w-auto sm:h-[14px]"
         />
       ) : undefined}
-      <p className={shrinkOnMobile ? "hidden sm:block" : ""}>{text}</p>
+      <p className={shrinkOnMobile ? "hidden sm:block" : " font-roboto"}>
+        {text}
+      </p>
     </button>
   );
 }

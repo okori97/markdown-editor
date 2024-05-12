@@ -33,7 +33,8 @@ export default function HomePage() {
   return (
     <main
       className={
-        (isSidebarOpen ? " relative " : "") + "min-h-screen flex-row sm:flex "
+        (isSidebarOpen ? " relative " : "") +
+        "h-full min-h-screen flex-row sm:flex dark:bg-primary-200 "
       }
     >
       <Editor />

@@ -1,35 +1,87 @@
-# Create T3 App
+# Inline Markdown Editor
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This is a solution to the [In-browser markdown editor challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/inbrowser-markdown-editor-r16TrrQX9). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## What's next? How do I make an app with this?
+## Table of contents
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- [Overview](#overview)
+  - [Functional Requirements](#functional-requirments)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+  - [Failed express version](#failed-express-version)
+- [My Process](#my-process)
+  - [Built with](#built-with)
+- [Setup](#setup)
+- [Continued Development](#continued-development)
+- [Author](#author)
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Overview
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+### Functional Requirments
 
-## Learn More
+Users should be able to:
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+-The user must be able to search for cities from both the home screen and the weather
+results screen.
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+- Create, Read, Update, and Delete markdown documents
+- Name and save documents to be accessed as needed
+- Edit the markdown of a document and see the formatted preview of the content
+- View a full-page preview of the formatted content
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### Screenshot
 
-## How do I deploy this?
+![Desktop](./public/desktop-darkmode-sidebar.png)
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+### Links
 
-- [] add hover states to buttons
-- [] add hover states to document name
-- [] add save document feature
-- [] add delete document feature
-- [] add edit document feature
+- Solution URL: [Github](https://github.com/okori97/markdown-editor)
+- Live site URL: [Vercel site](https://markdown-editor-sable.vercel.app/)
+
+#### Failed express version
+
+I botched the deployment of an express version of this app, but i'm happy to share it if anyone is interested. It's a bit more complex than the nextjs version, but it's still a good example of how to use express and node, and has testing and mocking in place.
+
+- Extra: Express version: [Github](https://github.com/okori97/full-stack-markdown-editor)
+
+## My process
+
+### Built with
+
+- Typescript
+- Nextjs
+- Tailwindcss
+- Drizzle
+- ReactMarkdown
+- Postgres
+- eslint
+
+## Setup
+
+Make sure to install the dependencies:
+
+```bash
+# npm
+npm install
+
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
+```
+
+### Continued development
+
+I would like to add more feedback, such as success and error toasts when files are saved and deleted. I also would have maybe added a search bar to the home screen to search for documents and a tagging system to allow users to tag documents. I certainly would like to create a loading screen for when the app is fetching data from the server.
+
+## Author
+
+- Website - [Okori Lewis-McCalla](https://www.okori.com)
+- Frontend Mentor - [@okori97](https://www.frontendmentor.io/profile/okori97)
+- Twitter - [@onlyokori](https://www.twitter.com/onlyokori)

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useAppContext } from "../Context/state";
 
 export function DocumentHeading({
@@ -15,8 +14,8 @@ export function DocumentHeading({
     setIsFullScreen(!isFullScreen);
   };
   return (
-    <div className="  flex  flex-row items-center justify-between bg-secondary-50 px-4 py-1.5">
-      <p className=" text-xs  font-[500]  capitalize tracking-widest text-secondary-150">
+    <div className={headingContClasses}>
+      <p className="text-xs  font-[500]  capitalize tracking-widest text-secondary-150">
         {text}
       </p>
 
@@ -31,3 +30,5 @@ export function DocumentHeading({
     </div>
   );
 }
+const headingContClasses =
+  "flex  flex-row items-center justify-between bg-secondary-50 px-4 py-1.5 dark:bg-primary-150";

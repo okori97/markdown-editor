@@ -16,6 +16,16 @@ export function Navbar() {
     setActiveFile,
   } = useAppContext();
 
+  const navbarContClasses =
+    (isSidebarOpen
+      ? " relative  flex-wrap  sm:flex sm:h-fit sm:overflow-visible "
+      : "") +
+    "sm: flex max-h-[52px] w-full items-center justify-between overflow-hidden bg-primary-100 pr-[6px] sm:h-fit sm:max-h-none sm:pr-3";
+
+  const menuButtonClasses =
+    (isSidebarOpen ? "bg-tertiary-150" : "bg-primary-50") +
+    " mr-4 px-4 py-5  sm:mr-0 sm:px-4 sm:py-6";
+
   const handleSave = async () => {
     const updatedDoc = await saveFile(activeFile);
     if (updatedDoc != undefined && updatedDoc?.length > 0) {
@@ -24,28 +34,16 @@ export function Navbar() {
   };
 
   return (
-    <div
-      className={
-        (isSidebarOpen
-          ? " relative h-[52px] flex-wrap overflow-hidden sm:flex sm:h-fit sm:overflow-visible "
-          : "") +
-        "flex h-fit w-full items-center justify-between bg-primary-150 pr-[6px] sm:pr-3"
-      }
-    >
+    <div className={navbarContClasses}>
       <div className="flex w-fit items-center ">
         <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-          <div
-            className={
-              (isSidebarOpen ? "bg-tertiary-150" : "bg-primary-100") +
-              " mr-4 px-4 py-5  sm:mr-0 sm:px-4 sm:py-6"
-            }
-          >
+          <div className={menuButtonClasses}>
             <Image
               src={"/icon-menu.svg"}
               alt=""
               width={24}
               height={24}
-              className=" w-[20px] sm:w-[24px]"
+              className=" min-w-[20px] sm:w-[20px]"
             />
           </div>
         </button>

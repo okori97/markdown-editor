@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-roboto-slab: "Roboto Slab", serif; /* Fallback to serif if not loaded */
+  --font-roboto: "Roboto", sans-serif;
+}
+
 .icon-eye {
   background: url("/icon-show-preview.svg");
   background-repeat: no-repeat;
@@ -31,4 +36,20 @@
 
 .icon-bin:hover {
   background-image: url("/icon-deletehover.svg");
+}
+
+.dark blockquote {
+  @apply bg-primary-150;
+}
+
+.dark pre {
+  @apply bg-primary-150;
+}
+
+.dark .markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h3,
+.markdown h4 {
+  @apply text-white;
 }
